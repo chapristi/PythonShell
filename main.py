@@ -1,4 +1,3 @@
-from math import trunc
 import time 
 
 
@@ -8,11 +7,12 @@ class Terminal:
         self.name = "[default]>"
         pass
     def callGoodFunction(self):
-            commandes  = {"run":self.run(),"name":self.name(),"help":self.help(),"quit":self.quit()}
-            if self.command in commandes.keys:
-                return commandes[self.command]
-            elif self.command == "quit":
-                return False
+            commandes=dict({"run":self.run(),"name":self.name(),"help":self.help(),"quit":self.quit()})
+            for key,value in commandes.items(): 
+              if self.command == key:
+                  return globals(value)
+              elif self.command == "quit":
+                  return False
     def run(self):
        for i in range(0,5):
         print(".")
@@ -34,9 +34,8 @@ class Terminal:
 while True:
     s = input("[default]>")
     Terminal = Terminal(s)
-    Terminal.callGoodFunction()
-    if(Terminal.callGoodFunction() == False):
+    Call = Terminal.callGoodFunction()
+    if(Call == False):
         break
  
     
-
