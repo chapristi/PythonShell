@@ -1,4 +1,4 @@
-import time 
+mport time 
 
 
 class Terminal:
@@ -19,14 +19,14 @@ class Terminal:
                 return "break"
             
       
-    def run(self):
+    def run(self) -> str:
        for i in range(0,5):
         print(".")
         time.sleep(1)
-    def name(self):
+    def name(self) -> str:
         self.nameConsole = input("Entrez un nouveau nom pour le terminal ")
         print(f" le terminal se nomme maintenant {self.nameConsole}")
-    def help(self):
+    def help(self) -> str:
         print("""\
          commandes:
                 run =>  ("permet d'afficher 5 points avec delait "),
