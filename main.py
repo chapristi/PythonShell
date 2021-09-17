@@ -34,8 +34,8 @@ class Terminal:
                 help =>  ("permet d'afficher les commandes"),
                 quit => ("permet de fermer le terminal")
         """)
+terminal = Terminal()
 while True:     
-  terminal = Terminal()
   Call = terminal.callGoodFunction()
   if Call == "break":
     break
