@@ -6,15 +6,18 @@ class Terminal:
         self.nameConsole = "[default]"
         pass
     def callGoodFunction(self):
-        while True:
           s = input(self.nameConsole + ">>>")
-          commandes= dict({"run":self.run,"name":self.name,"help":self.help})
+          commandes= dict({
+          "run":self.run,
+          "name":self.name,
+          "help":self.help
+          })
           for key,value in commandes.items(): 
             if s == key:
               return value()
             elif s == "quit":
-              print("a bientot")
-              break
+                return "break"
+            
       
     def run(self):
        for i in range(0,5):
@@ -31,8 +34,9 @@ class Terminal:
                 help =>  ("permet d'afficher les commandes"),
                 quit => ("permet de fermer le terminal")
         """)
-    
-terminal = Terminal()
-Call = terminal.callGoodFunction()
-
+while True:     
+  terminal = Terminal()
+  Call = terminal.callGoodFunction()
+  if Call == "break":
+    break
  
