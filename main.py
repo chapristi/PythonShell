@@ -2,40 +2,37 @@ import time
 
 
 class Terminal:
-    def __init__(self,command) -> None:
-        self.command = command
-        self.name = "[default]>"
+    def __init__(self) -> None:
+        self.nameConsole = "[default]"
         pass
     def callGoodFunction(self):
-            commandes=dict({"run":self.run(),"name":self.name(),"help":self.help(),"quit":self.quit()})
-            for key,value in commandes.items(): 
-              if self.command == key:
-                  return globals(value)
-              elif self.command == "quit":
-                  return False
+        while True:
+          s = input(self.nameConsole + ">>>")
+          commandes= dict({"run":self.run,"name":self.name,"help":self.help})
+          for key,value in commandes.items(): 
+            if s == key:
+              return value()
+            elif s == "quit":
+              print("a bientot")
+              break
+      
     def run(self):
        for i in range(0,5):
         print(".")
         time.sleep(1)
     def name(self):
-        self.name = input(f"{self.name} entrez le nouveau nom nouveau nom du terminal")
+        self.nameConsole = input("Entrez un nouveau nom pour le terminal ")
+        print(f" le terminal se nomme maintenant {self.nameConsole}")
     def help(self):
-        fiche =  """
-            commandes:
+        print("""\
+         commandes:
                 run =>  ("permet d'afficher 5 points avec delait "),
                 name =>  ("permet de changer le nom de son terminal"),
                 help =>  ("permet d'afficher les commandes"),
                 quit => ("permet de fermer le terminal")
-        """
-        print(fiche)
+        """)
     
-       
+terminal = Terminal()
+Call = terminal.callGoodFunction()
 
-while True:
-    s = input("[default]>")
-    Terminal = Terminal(s)
-    Call = Terminal.callGoodFunction()
-    if(Call == False):
-        break
  
-    
